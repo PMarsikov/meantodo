@@ -8,7 +8,7 @@ angular
 			//$locationProvider.hashPrefix('!');
 			$routeProvider
 				.when('/', {
-					template: '<h1>H1HL</h1>'
+					template: '<a href="#/todos">Todos Page</a> <h1>TODO app</h1>'
 				})
 				.when('/todos', {
 					template: '<todo-list></todo-list>'

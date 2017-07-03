@@ -1,10 +1,67 @@
+<a href="#/">Home Page</a>
 <h1>TODOList template</h1>
+
 <!--
-<ul>
-	<li ng-repeat="todo in $ctrl.todoListAll">
-		<span>{{todo}}</span>	
-	</li>
-</ul>
-{{$ctrl.tasksList}}
-{{tasksList}}
-ddd-->
+<form action=""></form>-->
+<form class="form-inline">
+	<div class = "btn-group">
+		<button type="button" class="btn btn-primary dropdown-toggle"  data-toggle="dropdown">
+			{{$ctrl.sevSelected}} 	
+		</button>
+		<ul class = "dropdown-menu" role="menu">
+			<li class="dropdown" ng-repeat="sev in $ctrl.sev" ng-click="$ctrl.setSeverity(sev)">
+				{{sev.display}}
+			</li>
+		</ul>
+		<span style="padding-left: 10px; float:left;">
+			<input placeholder="What do I need to do?" class="form-control" ng-model="$ctrl.newTask">
+		</span>
+		<span style="padding-left: 10px; float:left;">
+			<button class="btn btn-success" ng-click="$ctrl.addTask()">Add task</button>
+		</span>
+		<!--<span ng-show="$ctrl.showInputError">
+			<h4>Please fill in all fields!</h4>
+		</span>-->
+		
+	</div>
+</form>
+
+
+<table class="table table-striped">
+	<tr>
+		<th>Severity</th>
+		<th>Task</th>
+		<th>Action</th>
+		<th>Complited</th>
+	</tr>
+	<tr ng-repeat="todo in $ctrl.todosList">
+		<td>
+			{{todo.severity}}
+		</td>
+		<td>
+			{{todo.task}}
+		</td>
+		<td>
+			<button ng-show="!$ctrl.todoItemEditMode[$index]" 
+					ng-click="$ctrl.changeMode($index)" 
+					class="btn btn-info" >Edit
+			</button>
+			<button ng-show="!$ctrl.todoItemEditMode[$index]" 
+					ng-click="$ctrl.deleteTodo($index)" 
+					class="btn btn-danger" >Delete
+			</button>			
+			<button ng-show="$ctrl.todoItemEditMode[$index]" 
+					ng-click="$ctrl.saveTodo(todo, $index)" 
+					class="btn btn-primary" >Save
+			</button>					
+			<button ng-show="$ctrl.todoItemEditMode[$index]" 
+					ng-click="$ctrl.cancelEdit($index)" 
+					class="btn btn-default" >Cancel
+			</button>			
+		</td>
+		<td>
+			{{todo.isCompleted}}
+		</td>
+	</tr>
+</table>
+
