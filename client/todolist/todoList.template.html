@@ -39,11 +39,15 @@
 			{{todo.severity}}
 		</td>
 		<td>
-			{{todo.task}}
+			
+		<span ng-show="!$ctrl.todoItemEditMode[$index]">{{todo.task}}</span>
+		<input ng-show="$ctrl.todoItemEditMode[$index]" ng-model="todo.task" type="text"
+		value="{{$ctrl.currentEdit}}">
+
 		</td>
 		<td>
 			<button ng-show="!$ctrl.todoItemEditMode[$index]" 
-					ng-click="$ctrl.changeMode($index)" 
+					ng-click="$ctrl.editTask(todo, $index)" 
 					class="btn btn-info" >Edit
 			</button>
 			<button ng-show="!$ctrl.todoItemEditMode[$index]" 
@@ -55,7 +59,7 @@
 					class="btn btn-primary" >Save
 			</button>					
 			<button ng-show="$ctrl.todoItemEditMode[$index]" 
-					ng-click="$ctrl.cancelEdit($index)" 
+					ng-click="$ctrl.cancelTask(todo, $index)" 
 					class="btn btn-default" >Cancel
 			</button>			
 		</td>

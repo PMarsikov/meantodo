@@ -40,6 +40,24 @@ angular
 					
 				};
 
+
+				self.editTask = function(todo, todoItem) {
+					self.todoItemEditMode[todoItem] = true;
+					self.currentEdit = todo.task;
+				};
+
+				self.cancelTask = function(todo, todoItem) {
+					//todo.task = self.currentEdit;
+					self.todoItemEditMode[todoItem] = false;
+				};
+
+
+
+
+
+  
+
+/*
 				self.saveTodo = function(todo, todoItem) {
 					self.changeMode(todoItem);
 				};
@@ -62,7 +80,7 @@ angular
 					}
 				};
 
-				
+				*/
 				
 
 		}]
