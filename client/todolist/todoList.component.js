@@ -9,9 +9,14 @@ angular
 				var self = this;
 
 				//controller values
-				self.sevSelected = 'Choose severity'
+				self.sevSelectedDisplay = 'Choose severity'
+				self.sevSelectedUse = '0'
 				self.newTask = '';
 				self.todoItemEditMode = [];
+				self.currentEdit = [];
+				self.formInputError = '';
+				self.todosList = [];
+				//self.taskEdit = [];
 
 				//self.showInputError = false;
 				self.sev = [
@@ -22,66 +27,81 @@ angular
 				];
 
 				// load all tasks
-				todoListFactory
-					.todoGetAll()
-					.success(function(data) {
-						self.todosList = data;
-					});
+				todoListFactory.todoGetAll().success(function(data) {
+					self.todosList = data;
+					console.log(self.todosList);
+				});
 
 
 				self.addTask = function() {
-					/* Check input!!!
-					if (self.sevSelected ==='Choose severity' || self.newTask ==='') {
-						self.showInputError = true;
+					//form validation
+					if (self.sevSelectedUse === '0') {
+						self.formInputError = 'Please choose severity';
+						return;
 					} else {
-						self.showInputError = false;	
-					};*/
-					
+						if (self.newTaskForm.$invalid) {
+							//self.formInputError = 'You have to specify task field';
+							return;
+						} else {
+							self.formInputError = '';
+						}
+					};
+					  
+					var newTodo = {
+						"severity" : self.sevSelectedUse,
+						"task" : self.newTask,
+						"isCompleted" : false
+					};
+					todoListFactory.todoAddTodo(newTodo).success(function(data) {
+						self.todosList.push(data);
+						self.sevSelectedDisplay = 'Choose severity'
+						self.sevSelectedUse = '0'
+						self.newTask = '';
+					});
 					
 				};
 
+				self.deleteTask = function(todo, todoItemId) {
+					self.todosList.splice(self.todosList.indexOf(todo),1);
+					todoListFactory.todoDeleteTodo(todoItemId).success(function(data) {
+						//
+					});
+
+				};
 
 				self.editTask = function(todo, todoItem) {
 					self.todoItemEditMode[todoItem] = true;
-					self.currentEdit = todo.task;
+					self.currentEdit[todoItem] = todo.task;
 				};
 
 				self.cancelTask = function(todo, todoItem) {
-					//todo.task = self.currentEdit;
 					self.todoItemEditMode[todoItem] = false;
 				};
 
+				self.saveTask = function(todo, todoItem) {
+					self.todoItemEditMode[todoItem] = false;
+					todo.task = self.currentEdit[todoItem];
+					
+					todoListFactory.todoUpdateTodo(todo._id, todo).success(function(data) {
+						//
+					});
 
-
-
-
-  
-
-/*
-				self.saveTodo = function(todo, todoItem) {
-					self.changeMode(todoItem);
 				};
 
-				self.cancelEdit = function(todoItem) {
-					self.changeMode(todoItem);
+				self.changeStatus = function(todo) {
+					todo.isCompleted = !todo.isCompleted;
+					todoListFactory.todoUpdateTodo(todo._id, todo).success(function(data) {
+						//
+					});					
 				}
 
 				// set severity dropdown	
 				self.setSeverity = function(sev) {
-					self.sevSelected = sev.display;
+					self.sevSelectedDisplay = sev.display;
+					self.sevSelectedUse = sev.use;
+					self.formInputError = '';
+
 				};
-
-				//change mode
-				self.changeMode = function(todoItem) {
-					if (self.todoItemEditMode[todoItem]) {
-						self.todoItemEditMode[todoItem] = false;
-					} else {
-						self.todoItemEditMode[todoItem] = true;
-					}
-				};
-
-				*/
-				
-
+  
 		}]
 	});

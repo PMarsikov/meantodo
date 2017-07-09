@@ -1,20 +1,21 @@
-<a href="#/">Home Page</a>
+<!--<a href="#/">Home Page</a>
 <h1>TODOList template</h1>
-
+-->
 <!--
 <form action=""></form>-->
-<form class="form-inline">
+<div style="margin-bottom: 10px;">
+<form class="form-inline" name="$ctrl.newTaskForm">
 	<div class = "btn-group">
 		<button type="button" class="btn btn-primary dropdown-toggle"  data-toggle="dropdown">
-			{{$ctrl.sevSelected}} 	
+			{{$ctrl.sevSelectedDisplay}} 	
 		</button>
 		<ul class = "dropdown-menu" role="menu">
-			<li class="dropdown" ng-repeat="sev in $ctrl.sev" ng-click="$ctrl.setSeverity(sev)">
+			<li class="dropdown" ng-repeat="sev in $ctrl.sev" ng-click="$ctrl.setSeverity(sev)" required>
 				{{sev.display}}
 			</li>
 		</ul>
 		<span style="padding-left: 10px; float:left;">
-			<input placeholder="What do I need to do?" class="form-control" ng-model="$ctrl.newTask">
+			<input name="newInput" placeholder="What do I need to do?" class="form-control" ng-model="$ctrl.newTask" required >
 		</span>
 		<span style="padding-left: 10px; float:left;">
 			<button class="btn btn-success" ng-click="$ctrl.addTask()">Add task</button>
@@ -25,37 +26,41 @@
 		
 	</div>
 </form>
+</div>
+<!--<div ng-show="newTaskForm.newInput.$dirty && newTaskForm.newInput.$invalid">
+	<p>Error</p>
+</div>-->
 
+{{$ctrl.formInputError}}
 
-<table class="table table-striped">
+<div class="row">
+  <div class="col-md-12">
+  	<table class="table table-striped">
 	<tr>
 		<th>Severity</th>
 		<th>Task</th>
 		<th>Action</th>
 		<th>Complited</th>
 	</tr>
-	<tr ng-repeat="todo in $ctrl.todosList">
+	<tr ng-repeat="todo in $ctrl.todosList | orderBy:'severity'" ng-class="{'isCompletedStyle' : todo.isCompleted}">
 		<td>
 			{{todo.severity}}
 		</td>
 		<td>
-			
-		<span ng-show="!$ctrl.todoItemEditMode[$index]">{{todo.task}}</span>
-		<input ng-show="$ctrl.todoItemEditMode[$index]" ng-model="todo.task" type="text"
-		value="{{$ctrl.currentEdit}}">
-
+			<span ng-show="!$ctrl.todoItemEditMode[$index]" ng-class="{'isCompletedStyle' : todo.isCompleted}">{{todo.task}}</span>
+			<input ng-show="$ctrl.todoItemEditMode[$index]" ng-model="$ctrl.currentEdit[$index]" type="text" value="{{$ctrl.currentEdit[$index]}}">		
 		</td>
 		<td>
-			<button ng-show="!$ctrl.todoItemEditMode[$index]" 
+			<button ng-show="!$ctrl.todoItemEditMode[$index]  && !todo.isCompleted" 
 					ng-click="$ctrl.editTask(todo, $index)" 
 					class="btn btn-info" >Edit
 			</button>
 			<button ng-show="!$ctrl.todoItemEditMode[$index]" 
-					ng-click="$ctrl.deleteTodo($index)" 
+					ng-click="$ctrl.deleteTask(todo, todo._id)" 
 					class="btn btn-danger" >Delete
 			</button>			
 			<button ng-show="$ctrl.todoItemEditMode[$index]" 
-					ng-click="$ctrl.saveTodo(todo, $index)" 
+					ng-click="$ctrl.saveTask(todo, $index)" 
 					class="btn btn-primary" >Save
 			</button>					
 			<button ng-show="$ctrl.todoItemEditMode[$index]" 
@@ -64,8 +69,17 @@
 			</button>			
 		</td>
 		<td>
-			{{todo.isCompleted}}
+			<input type="checkbox" ng-click="$ctrl.changeStatus(todo)" ng-checked="todo.isCompleted"></input>
 		</td>
 	</tr>
 </table>
+  </div>
+</div>
+
+
+
+
+<div ng-if="$ctrl.todosList.length==0">
+	<h4>Nothing todo</h4>
+</div>
 

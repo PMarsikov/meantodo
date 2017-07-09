@@ -1,0 +1,45 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "TODO SPA",
+  "main": "./server/server.conf.js",
+  "engines": {
+    "node": ">= 4.2",
+    "npm": "2.1.1"
+},
+
+  "scripts": {
+    "test": "karma start karma.conf.ci.js --no-fail-on-empty-test-suite",
+    "postinstall": "bower install",
+    "start": "node server/server.conf.js",
+    "build": "gulp build",
+    "preupdate-webdriver": "npm install",
+    "update-webdriver": "webdriver-manager update",
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor e2e-tests/protractor.conf.js"
+  },
+  "author": "Ivan Karol <IKarol@gomel.iba.by>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
+    "mongodb": "^2.2.22",
+    "mongoose": "^4.8.1",
+    "bower": "^1.8.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^2.0.1",
+    "gulp-angular-embed-templates": "^2.3.0",
+    "gulp-useref": "^3.1.2",
+    "gulp-cli": "1.2.2",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.4.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-sonarqube-unit-reporter": "0.0.7",
+    "protractor": "^4.0.9"
+  }
+}

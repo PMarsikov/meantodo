@@ -1,0 +1,33 @@
+<!--<a href="#/todos">Todo Page</a>
+<h1>Main page template</h1>
+
+
+There 
+<span ng-show="$ctrl.openCount<2">is </span> 
+<span ng-show="$ctrl.openCount>1">are </span>
+{{$ctrl.openCount}} 
+open 
+<span ng-show="$ctrl.openCount<2">task</span> 
+<span ng-show="$ctrl.openCount>1">tasks</span>
+
+
+
+
+ {{$ctrl.date | date:'yyyy-MM-dd'}}
+  {{$ctrl.time | date:'h:mm:ss a'}}
+-->
+
+ 
+
+ <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>MEAN ToDo App</h1>
+        <p>{{$ctrl.openTaskStatusLine}}</p>
+        <p>
+        	{{$ctrl.date | date:'yyyy-MM-dd'}}
+  			{{$ctrl.time | date:'h:mm:ss a'}}
+        </p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="#/todos" role="button" onclick="setActive('link2')">View open tasks &raquo;</a>
+        </p>
+      </div>

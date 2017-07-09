@@ -11,12 +11,15 @@ var todoSchema = new mongoose.Schema({
 	},
 	isCompleted : {
 		type : Boolean
-	},
+	}/*,
 	isEditing : {
 		type : Boolean
-	}
+	}*/
 
 });
 
 
 mongoose.model('TodoList', todoSchema, 'todolist');
+
+
+
