@@ -35,6 +35,7 @@ angular
 
 				self.addTask = function() {
 					//form validation
+				
 					if (self.sevSelectedUse === '0') {
 						self.formInputError = 'Please choose severity';
 						return;
@@ -52,13 +53,14 @@ angular
 						"task" : self.newTask,
 						"isCompleted" : false
 					};
+
 					todoListFactory.todoAddTodo(newTodo).success(function(data) {
 						self.todosList.push(data);
 						self.sevSelectedDisplay = 'Choose severity'
 						self.sevSelectedUse = '0'
 						self.newTask = '';
 					});
-					
+					/*	*/
 				};
 
 				self.deleteTask = function(todo, todoItemId) {
