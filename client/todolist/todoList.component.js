@@ -7,7 +7,6 @@ angular
 		controller: ['todoListFactory', 
 			function todoListController(todoListFactory){
 				var self = this;
-
 				//controller values
 				self.sevSelectedDisplay = 'Choose severity'
 				self.sevSelectedUse = '0'
@@ -29,13 +28,14 @@ angular
 				// load all tasks
 				todoListFactory.todoGetAll().success(function(data) {
 					self.todosList = data;
-					console.log(self.todosList);
+					//console.log(self.todosList);
 				});
 
 
 				self.addTask = function() {
 					//form validation
 				
+					/**/
 					if (self.sevSelectedUse === '0') {
 						self.formInputError = 'Please choose severity';
 						return;
@@ -47,6 +47,7 @@ angular
 							self.formInputError = '';
 						}
 					};
+					self.formInputError = '';///
 					  
 					var newTodo = {
 						"severity" : self.sevSelectedUse,
@@ -60,11 +61,16 @@ angular
 						self.sevSelectedUse = '0'
 						self.newTask = '';
 					});
-					/*	*/
+					
 				};
 
 				self.deleteTask = function(todo, todoItemId) {
-					self.todosList.splice(self.todosList.indexOf(todo),1);
+					//self.todosList.splice(self.todosList.indexOf(todo),1);
+					for (var i = 0; i < self.todosList.length; i++) {
+						if (self.todosList[i]._id == todoItemId) {
+							self.todosList.splice(i, 1);
+						}
+					}
 					todoListFactory.todoDeleteTodo(todoItemId).success(function(data) {
 						//
 					});

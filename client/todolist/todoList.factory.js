@@ -11,7 +11,13 @@ angular
 			};
 
 			todoService.todoAddTodo = function(todo) {
+				//var pp = $http.post(baseUrl, todo);
 				return $http.post(baseUrl, todo);
+				/*console.log('pp-');
+				console.log(pp);
+				console.log(typeof(pp));
+				console.log('-pp');*/
+				//return pp;
 			};
 
 			todoService.todoDeleteTodo = function(id) {

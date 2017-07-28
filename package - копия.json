@@ -1,11 +1,20 @@
+
 {
   "name": "mean-to-do",
   "version": "1.0.0",
   "description": "MEAN stack application",
   "main": "server/app-server.js",
   "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install",
     "start": "node server/app-server.js",
+
+    "build": "gulp build",
+
+    
     "test": "karma start karma.conf.ci.js --no-fail-on-empty-test-suite"
+
+
   },
   "keywords": [
     "mean"
@@ -17,6 +26,7 @@
     "express": "^4.14.0",
     "mongodb": "^2.2.21",
     "mongoose": "^4.7.7"
+    
   },
   "devDependencies": {
     "body-parser": "^1.16.0",
@@ -25,19 +35,17 @@
     "gulp-concat": "^2.6.1",
     "gulp-jsmin": "^0.1.5",
     "gulp-uglify": "^2.0.1",
-    "jasmine-core": "^2.4.1",
-    "karma": "^0.13.22",
-    "karma-chrome-launcher": "^0.2.3",
-    "karma-coverage": "^1.1.1",
-    "karma-firefox-launcher": "^0.1.7",
-    "karma-jasmine": "^0.3.8",
-    "karma-junit-reporter": "^1.1.0",
-    "karma-phantomjs-launcher": "^1.0.2",
-    "karma-sonarqube-unit-reporter": "0.0.12",
-    "karma-spec-reporter": "0.0.26",
     "mocha": "^3.2.0",
     "mongodb": "^2.2.21",
     "mongoose": "^4.7.7",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.8",
+    "karma-spec-reporter": "0.0.26",
+    "karma-junit-reporter": "^1.1.0"
   }
 }

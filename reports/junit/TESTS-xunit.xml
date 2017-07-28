@@ -1,0 +1,9 @@
+<testExecutions version="1">
+  <file path="test suite 1 ">
+    <testCase name="test suite 1  should controller be defined" duration="75"/>
+    <testCase name="test suite 1  should get all todos" duration="20"/>
+    <testCase name="test suite 1  should add task" duration="15"/>
+    <testCase name="test suite 1  should delete task" duration="10"/>
+    <testCase name="test suite 1  should shange task status" duration="13"/>
+  </file>
+</testExecutions>

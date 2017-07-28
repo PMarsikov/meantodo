@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for todolist\todoList.component.spec.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">todolist/</a> todoList.component.spec.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>46/46</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>8/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>46/46</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">//https://rav.pw/httpbackend-when-vs-expect/
+// https://rav.pw/unit-testing-angularjs-applications/
+&nbsp;
+'use strict';
+&nbsp;
+&nbsp;
+&nbsp;
+describe('test suite 1 ', function() {
+	var $httpBackend, todoListFactory, ctrl;
+&nbsp;
+	beforeEach(module('todoList'));
+&nbsp;
+	beforeEach(inject(function($componentController, _$httpBackend_, _todoListFactory_) {
+&nbsp;
+/* ctrl = $componentController('homePage', { $scope: scope }); expect(ctrl).toBeDefined(); */
+		todoListFactory = _todoListFactory_;
+		$httpBackend = _$httpBackend_;
+		$httpBackend.expectGET('/todos')
+			.respond([
+					{_id: '1', severity: '1', task: 'brand new test task1', isCompleted: false}, 
+					{_id: '2', severity: '2', task: 'brand new test task2', isCompleted: true},
+					{_id: '3', severity: '3', task: 'brand new test task3', isCompleted: false},
+					{_id: '4', severity: '3', task: 'brand new test task4', isCompleted: true}
+				]);
+		ctrl = $componentController('todoList');		
+	}));
+&nbsp;
+	it('should controller be defined', function() {
+		expect(ctrl).toBeDefined();
+	});
+&nbsp;
+&nbsp;
+&nbsp;
+	it('should get all todos', function() {
+		//jasmine.addCustomEqualityTester(angular.equals);
+		expect(ctrl.todosList).toEqual([]);
+		$httpBackend.flush();
+		expect(ctrl.todosList).toEqual([
+					{_id: '1', severity: '1', task: 'brand new test task1', isCompleted: false}, 
+					{_id: '2', severity: '2', task: 'brand new test task2', isCompleted: true},
+					{_id: '3', severity: '3', task: 'brand new test task3', isCompleted: false},
+					{_id: '4', severity: '3', task: 'brand new test task4', isCompleted: true}
+				]);
+	});
+&nbsp;
+	it('should add task', function() {
+		expect(ctrl.todosList).toEqual([]);
+		$httpBackend.flush();
+&nbsp;
+		ctrl.sevSelectedUse = '2';
+		ctrl.newTask = 'brand new test task5';
+		ctrl.newTaskForm = {$invalid : false};
+		
+&nbsp;
+		var newTodo = {severity: '2', task: 'brand new test task5', isCompleted: false};
+		$httpBackend.expectPOST('/todos', newTodo).respond(201, 
+				{_id: '5', severity: '2', task: 'brand new test task5', isCompleted: true}
+			);
+		
+		ctrl.addTask();
+		$httpBackend.flush();
+&nbsp;
+		expect(ctrl.todosList).toEqual([
+					{_id: '1', severity: '1', task: 'brand new test task1', isCompleted: false}, 
+					{_id: '2', severity: '2', task: 'brand new test task2', isCompleted: true},
+					{_id: '3', severity: '3', task: 'brand new test task3', isCompleted: false},
+					{_id: '4', severity: '3', task: 'brand new test task4', isCompleted: true},
+		/*new*/		{_id: '5', severity: '2', task: 'brand new test task5', isCompleted: true}
+				]);		
+	});
+&nbsp;
+&nbsp;
+	it('should delete task', function() {
+		//jasmine.addCustomEqualityTester(angular.equals);
+		expect(ctrl.todosList).toEqual([]);
+		$httpBackend.flush();
+	
+		//$httpBackend.expectPOST('/todos', newTodo).respond(201, '');
+		var taskToDelete = {_id: '2', severity: '2', task: 'brand new test task2', isCompleted: true};
+		var taskIdToDelete = '2';
+		$httpBackend.expectDELETE('/todos/' + taskIdToDelete).respond({});
+&nbsp;
+		ctrl.deleteTask(taskToDelete,taskIdToDelete);
+		//var status = ctrl.addTask();
+		//expect(status).toBe(null);
+		
+		expect(ctrl.todosList).toEqual([
+					{_id: '1', severity: '1', task: 'brand new test task1', isCompleted: false}, 
+					{_id: '3', severity: '3', task: 'brand new test task3', isCompleted: false},
+					{_id: '4', severity: '3', task: 'brand new test task4', isCompleted: true}				
+				]);
+	});
+&nbsp;
+&nbsp;
+	it('should shange task status', function() {
+		expect(ctrl.todosList).toEqual([]);
+		$httpBackend.flush();
+		
+		var taskIdToUpd = '3';
+		var taskToUpd = {_id: '3', severity: '3', task: 'brand new test task3', isCompleted: false};
+&nbsp;
+		$httpBackend.expectPUT('/todos/'+taskIdToUpd, taskToUpd).respond(201, '');
+&nbsp;
+		var prevStatus = taskToUpd.isCompleted;
+		ctrl.changeStatus(taskToUpd);
+		$httpBackend.flush();
+		expect(taskToUpd.isCompleted).not.toEqual(prevStatus);
+	});
+&nbsp;
+&nbsp;
+	afterEach(function() {
+		$httpBackend.verifyNoOutstandingRequest(); //нет ожидающих исходящих запросов с клиентской стороны
+		$httpBackend.verifyNoOutstandingExpectation();//отсутствие несработавших ожиданий запросов на серверной стороне.
+	});
+&nbsp;
+});
+&nbsp;
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jul 29 2017 00:08:58 GMT+0300 (Саудовское время (зима))
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

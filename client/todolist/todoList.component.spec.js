@@ -5,172 +5,114 @@
 
 
 
-describe('Component ', function() {
-	//
-	var $httpBackend, todoListFactory, ctrl, $scope;
+describe('test suite 1 ', function() {
+	var $httpBackend, todoListFactory, ctrl;
 
 	beforeEach(module('todoList'));
-	//beforeEach(inject(['todoListFactory']));
-	beforeEach(inject(function($componentController, _$httpBackend_,_todoListFactory_) {
-		//ctrl = $componentController('todoList');
 
+	beforeEach(inject(function($componentController, _$httpBackend_, _todoListFactory_) {
 
-
-//            $scope = $rootScope.$new();
-            //ctrl = $componentController('todoList', {$scope: $scope});
-            
-            var bindings = {todosList : []};
-		ctrl = $componentController('todoList', null, bindings );
-
-
-
-		$httpBackend = _$httpBackend_;
+/* ctrl = $componentController('homePage', { $scope: scope }); expect(ctrl).toBeDefined(); */
 		todoListFactory = _todoListFactory_;
+		$httpBackend = _$httpBackend_;
+		$httpBackend.expectGET('/todos')
+			.respond([
+					{_id: '1', severity: '1', task: 'brand new test task1', isCompleted: false}, 
+					{_id: '2', severity: '2', task: 'brand new test task2', isCompleted: true},
+					{_id: '3', severity: '3', task: 'brand new test task3', isCompleted: false},
+					{_id: '4', severity: '3', task: 'brand new test task4', isCompleted: true}
+				]);
+		ctrl = $componentController('todoList');		
 	}));
 
-	//todosList = [];
-
-/*	    it('should have an empty tasks array', function() {
-            expect($scope.todosList).toEqual([]);
-        });*/
-
-
-	it('ddddd', function() {
-		//
-
-		var task = {
-			isCompleted : true,
-			severity : "1",
-			task : "AAA SSS3"
-		};
-
-		
-/*
-		$scope.newTodo = {
-			isCompleted : true,
-			severity : "1",
-			task : "AAA SSS3"
-		};
-		
-		$httpBackend.expectGET('/todos')
-					.respond([
-							{
-								isCompleted : true,
-								severity : "1",
-								task : "AAA SSS1"
-							},
-							{
-								isCompleted : true,
-								severity : "2",
-								task : "AAA SSS2"
-							}
-						]);
-
-*/
-
-
-/*
-		$httpBackend.expectPOST('/todos', {
-			//task: {
-				isCompleted : true,
-				severity : "1",
-				task : "AAA SSS3"
-			//}
-		});
-*/
-
-//            $httpBackend.expectGET('/todos');
-
-		ctrl.addTask();
-
-
-	$httpBackend.whenGET('/todos').respond([]);
-	/**/
-    $httpBackend.whenPOST('/todos').respond({
-    			isCompleted : true,
-				severity : "1",
-				task : "AAA SSS3"
-			});
-
-
-	//todoListFactory.todoAddTodo(task);
-	$httpBackend.flush();
-
-
+	it('should controller be defined', function() {
+		expect(ctrl).toBeDefined();
 	});
 
 
 
-});
-/*
-describe('todoApp', function(){
+	it('should get all todos', function() {
+		//jasmine.addCustomEqualityTester(angular.equals);
+		expect(ctrl.todosList).toEqual([]);
+		$httpBackend.flush();
+		expect(ctrl.todosList).toEqual([
+					{_id: '1', severity: '1', task: 'brand new test task1', isCompleted: false}, 
+					{_id: '2', severity: '2', task: 'brand new test task2', isCompleted: true},
+					{_id: '3', severity: '3', task: 'brand new test task3', isCompleted: false},
+					{_id: '4', severity: '3', task: 'brand new test task4', isCompleted: true}
+				]);
+	});
 
-	beforeEach(module('todoList'));
+	it('should add task', function() {
+		expect(ctrl.todosList).toEqual([]);
+		$httpBackend.flush();
 
-	describe('test controller', function(){
-		var ctrl,$httpBackend;
-		beforeEach(inject(function($componentController, _$httpBackend_){
-			
-			
-			$httpBackend = _$httpBackend_;
-			$httpBackend.expectGET('/todos')
-						.respond([
-								{
-									isCompleted : true,
-									severity : "1",
-									task : "AAA SSS1"
-								},
-								{
-									isCompleted : true,
-									severity : "2",
-									task : "AAA SSS2"
-								}
-							]);
-/-*
-			$httpBackend.expectGET('/todos')
-						.respond([
-								{
-									isCompleted : true,
-									severity : "1",
-									task : "AAA SSS1"
-								},
-								{
-									isCompleted : true,
-									severity : "2",
-									task : "AAA SSS2"
-								}
-							]);						
-
-*-/
-			ctrl = $componentController('todoList');
-			//expect(ctrl).toBeDefined();
-		}));
-
-		it('Check severity array', function() {
-			expect(ctrl.sev.length).toBe(4);
-		});
+		ctrl.sevSelectedUse = '2';
+		ctrl.newTask = 'brand new test task5';
+		ctrl.newTaskForm = {$invalid : false};
 		
 
-		it('Check severity array', function() {
-			jasmine.addCustomEqualityTester(angular.equals);
-			//expect(ctrl.todosList).toEqual([]);
-			$httpBackend.flush();
-			expect(ctrl.todosList).toEqual(
-							[
-								{
-									isCompleted : true,
-									severity : "1",
-									task : "AAA SSS1",
-								},
-								{
-									isCompleted : true,
-									severity : "2",
-									task : "AAA SSS2",
-								}
-							]);
-		});
+		var newTodo = {severity: '2', task: 'brand new test task5', isCompleted: false};
+		$httpBackend.expectPOST('/todos', newTodo).respond(201, 
+				{_id: '5', severity: '2', task: 'brand new test task5', isCompleted: true}
+			);
+		
+		ctrl.addTask();
+		$httpBackend.flush();
 
-	}); // - describe
+		expect(ctrl.todosList).toEqual([
+					{_id: '1', severity: '1', task: 'brand new test task1', isCompleted: false}, 
+					{_id: '2', severity: '2', task: 'brand new test task2', isCompleted: true},
+					{_id: '3', severity: '3', task: 'brand new test task3', isCompleted: false},
+					{_id: '4', severity: '3', task: 'brand new test task4', isCompleted: true},
+		/*new*/		{_id: '5', severity: '2', task: 'brand new test task5', isCompleted: true}
+				]);		
+	});
 
-}); // - describe
-*/
+
+	it('should delete task', function() {
+		//jasmine.addCustomEqualityTester(angular.equals);
+		expect(ctrl.todosList).toEqual([]);
+		$httpBackend.flush();
+	
+		//$httpBackend.expectPOST('/todos', newTodo).respond(201, '');
+		var taskToDelete = {_id: '2', severity: '2', task: 'brand new test task2', isCompleted: true};
+		var taskIdToDelete = '2';
+		$httpBackend.expectDELETE('/todos/' + taskIdToDelete).respond({});
+
+		ctrl.deleteTask(taskToDelete,taskIdToDelete);
+		//var status = ctrl.addTask();
+		//expect(status).toBe(null);
+		
+		expect(ctrl.todosList).toEqual([
+					{_id: '1', severity: '1', task: 'brand new test task1', isCompleted: false}, 
+					{_id: '3', severity: '3', task: 'brand new test task3', isCompleted: false},
+					{_id: '4', severity: '3', task: 'brand new test task4', isCompleted: true}				
+				]);
+	});
+
+
+	it('should shange task status', function() {
+		expect(ctrl.todosList).toEqual([]);
+		$httpBackend.flush();
+		
+		var taskIdToUpd = '3';
+		var taskToUpd = {_id: '3', severity: '3', task: 'brand new test task3', isCompleted: false};
+
+		$httpBackend.expectPUT('/todos/'+taskIdToUpd, taskToUpd).respond(201, '');
+
+		var prevStatus = taskToUpd.isCompleted;
+		ctrl.changeStatus(taskToUpd);
+		$httpBackend.flush();
+		expect(taskToUpd.isCompleted).not.toEqual(prevStatus);
+	});
+
+
+	afterEach(function() {
+		$httpBackend.verifyNoOutstandingRequest(); //нет ожидающих исходящих запросов с клиентской стороны
+		$httpBackend.verifyNoOutstandingExpectation();//отсутствие несработавших ожиданий запросов на серверной стороне.
+	});
+
+});
+
+
