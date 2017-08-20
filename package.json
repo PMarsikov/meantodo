@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "TODO SPA",
   "main": "server/app-server.js",
-  "engines": {
-    "node": ">= 4.2",
-    "npm": "2.1.1"
-  },
   "scripts": {
     "test": "karma start karma.conf.ci.js --no-fail-on-empty-test-suite",
     "postinstall": "bower install",
@@ -17,7 +13,7 @@
     "preprotractor": "npm run update-webdriver",
     "protractor": "protractor e2e-tests/protractor.conf.js"
   },
-  "author": "Ivan Karol <IKarol@gomel.iba.by>",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.16.0",
@@ -38,7 +34,9 @@
     "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.2",
-    "karma-sonarqube-unit-reporter": "0.0.7",
-    "protractor": "^4.0.9"
+    "karma-sonarqube-unit-reporter": "0.0.7"
+  },
+  "devDependencies": {
+    "protractor": "^5.1.2"
   }
 }
